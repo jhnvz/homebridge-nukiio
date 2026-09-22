@@ -49,7 +49,7 @@ function NukiLockAccessory(ServiceParam, CharacteristicParam, log, config, nukiB
     this.services.push(this.doorContactSensor);
   }
 
-  this.battservice = new Service.BatteryService(this.name);
+  this.battservice = new (Service.Battery || Service.BatteryService)(this.name);
   this.battservice.getCharacteristic(Characteristic.BatteryLevel).on('get', this.getBattery.bind(this));
   this.battservice.getCharacteristic(Characteristic.ChargingState).on('get', this.getCharging.bind(this));
   this.battservice.getCharacteristic(Characteristic.StatusLowBattery).on('get', this.getLowBatt.bind(this));

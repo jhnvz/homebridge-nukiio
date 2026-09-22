@@ -42,7 +42,7 @@ function NukiOpenerAccessory(ServiceParam, CharacteristicParam, log, config, nuk
   this.doorbellEnablementSwitchService.getCharacteristic(Characteristic.On).on('get', this.getDoorbellEnabled.bind(this)).on('set', this.setDoorbellEnabled.bind(this));
   this.doorbellEnablementSwitchService.getCharacteristic(Characteristic.On).updateValue(this._getDoorbellEnabled(), undefined, Constants.CONTEXT_FROM_NUKI_BACKGROUND);
 
-  this.battservice = new Service.BatteryService(this.name);
+  this.battservice = new (Service.Battery || Service.BatteryService)(this.name);
   this.battservice.getCharacteristic(Characteristic.BatteryLevel).on('get', this.getBattery.bind(this));
   this.battservice.getCharacteristic(Characteristic.ChargingState).on('get', this.getCharging.bind(this));
   this.battservice.getCharacteristic(Characteristic.StatusLowBattery).on('get', this.getLowBatt.bind(this));
