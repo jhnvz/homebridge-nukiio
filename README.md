@@ -17,6 +17,23 @@ Nuki.io support for Homebridge: https://github.com/nfarina/homebridge that suppo
 # Current state
 Seems to work solid. Feel free to create new issues in github for any problems.
 
+This fork is compatible with Homebridge v2. The `homebridge-nukiio` package on npm is the upstream version and does not include the v2 fix, so install this plugin from GitHub as described below.
+
+# Installation
+Install the plugin from this GitHub repository instead of npm.
+
+On a standard Homebridge installation (Raspberry Pi image, Debian/Ubuntu via `hb-service`, storage path `/var/lib/homebridge`):
+
+    cd /var/lib/homebridge
+    sudo npm install github:jhnvz/homebridge-nukiio
+    sudo hb-service restart
+
+If you run Homebridge with globally installed plugins:
+
+    sudo npm install -g github:jhnvz/homebridge-nukiio
+
+To update later, run the same install command again. Note that the Homebridge UI cannot update GitHub-installed plugins; clicking update there would replace it with the npm version.
+
 # Requirements
 You need the following information from your bridge for the configuration:
 - You must activate the developer mode on you bridge
